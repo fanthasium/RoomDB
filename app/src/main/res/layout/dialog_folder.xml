@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="dialog"
+            type="com.example.memojjang.dialog.DialogMkFolder" />
+    </data>
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="center">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="320dp"
+        android:layout_height="210dp"
+        android:layout_gravity="center"
+        android:background="@drawable/dialog_custom">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/mainTittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/dialogMainTittle"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/subTittle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dialogSubTittle"
+            android:textAlignment="center"
+            android:textColor="#686666"
+            android:textSize="13sp"
+            app:layout_constraintTop_toBottomOf="@id/mainTittle" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/nameEditTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/dialog_edittxt"
+            android:hint="@string/nameEditTxt"
+            android:padding="9dp"
+            android:textSize="12sp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/subTittle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/cancelBtn"
+            android:layout_width="150dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="28dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="13dp"
+            android:text="@string/btnCancel"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameEditTxt"
+            app:layout_constraintVertical_bias="0.833" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/okBtn"
+            android:layout_width="150dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="172dp"
+            android:layout_marginTop="28dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="13dp"
+            android:text="@string/btnOk"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameEditTxt"
+            app:layout_constraintVertical_bias="0.833" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

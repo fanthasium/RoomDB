@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="memoData"
+            type="com.example.memojjang.data.MemoData" />
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewMemo"
+                android:layout_width="370dp"
+                android:layout_height="65dp"
+                android:layout_margin="20dp"
+                android:elevation="10dp"
+                app:cardCornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:textAlignment="viewStart"
+                    android:textStyle="bold"
+                    app:drawableLeftCompat="@drawable/ic_baseline_folder_24"
+                    tools:ignore="RtlCompat"
+                    app:drawableTint="#ECD389" />
+
+
+
+            </androidx.cardview.widget.CardView>
+
+        </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/deleteMemo"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="16dp"
+            android:background="#FF3939"
+            android:drawableTint="@color/white"
+            android:gravity="center"
+            app:layout_constraintLeft_toRightOf="@id/frameLayout"
+            app:drawableStartCompat="@drawable/ic_baseline_delete_24"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
