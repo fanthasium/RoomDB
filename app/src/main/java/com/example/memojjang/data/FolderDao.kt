@@ -11,9 +11,10 @@ interface FolderDao {  // 데이터베이스에 접근하여 수행할 작업을
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFolder(vararg folder: FolderData)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMemo(vararg memo : MemoData){
-    }
+    @Insert(onConflict = OnConflictStrategy.REPLACE)   // {} 추가되면 쿼리 작동을 안하네?..
+    suspend fun insertMemo(vararg memo : MemoData)
+
+
 
     @Delete
     suspend fun deleteFolder(vararg folder: FolderData)
@@ -21,10 +22,12 @@ interface FolderDao {  // 데이터베이스에 접근하여 수행할 작업을
     @Delete
     suspend fun deleteMemo(vararg memo : MemoData)
 
-    @Update        //대신에 onConflict = OnConflictStrategy.REPLACE insert에서 쓰면 데이터 덮어짐
-    fun updateName(folder: FolderData) {
 
-    }
+
+    @Update        //대신에 onConflict = OnConflictStrategy.REPLACE insert에서 쓰면 데이터 덮어짐
+    fun updateName(folder: FolderData)
+
+
 
     // 조회 쿼리
     @Query("SELECT * FROM folder ORDER BY id ASC")

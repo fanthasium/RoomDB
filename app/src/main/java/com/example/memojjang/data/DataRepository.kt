@@ -14,12 +14,15 @@ class DataRepository (private val folderDao : FolderDao){
     suspend fun insertFolder(folderData : FolderData){
         folderDao.insertFolder(folderData)
     }
+
+    suspend fun insertMemo(memoData: MemoData){
+        folderDao.insertMemo(memoData)
+    }
+
     //리사이클러뷰 해당 아이템 삭제
    suspend fun deleteFolder(folderData: FolderData){
         folderDao.deleteFolder(folderData)
     }
-    suspend fun insertMemo(memoData: MemoData){
-        folderDao.insertMemo(memoData)
-    }
+
 
 }

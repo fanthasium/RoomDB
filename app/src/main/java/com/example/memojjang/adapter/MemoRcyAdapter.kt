@@ -1,20 +1,22 @@
 package com.example.memojjang.adapter
 
 import android.annotation.SuppressLint
-import android.content.Intent
+import android.content.Context
+
 import android.view.LayoutInflater
+
 import android.view.ViewGroup
-import android.widget.Adapter
+
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.memojjang.R
 import com.example.memojjang.activity.MemoActivity
-import com.example.memojjang.data.FolderData
-import com.example.memojjang.data.MemoData
-import com.example.memojjang.databinding.ItemMainBinding
-import com.example.memojjang.databinding.ItemMemoBinding
 
-class MemoRcyAdapter : RecyclerView.Adapter<MemoRcyAdapter.ViewHolder>(){
+import com.example.memojjang.data.MemoData
+import com.example.memojjang.databinding.ItemMemoBinding
+import com.example.memojjang.fragment.MemoFragment
+
+class MemoRcyAdapter(val context : Context) : RecyclerView.Adapter<MemoRcyAdapter.ViewHolder>(){
 
     private var memoList = ArrayList<MemoData>()
 
@@ -31,8 +33,17 @@ class MemoRcyAdapter : RecyclerView.Adapter<MemoRcyAdapter.ViewHolder>(){
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
       val itemList = memoList[position]
         holder.mBinding.memoData = itemList
+
+        holder.mBinding.cardViewMemo.setOnClickListener{
+            val goto = context as MemoActivity
+            goto.setFragment(MemoFragment())
+            goto.setData(position)
+
+
+        }
 
     }
 

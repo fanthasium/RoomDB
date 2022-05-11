@@ -4,10 +4,11 @@ package com.example.memojjang.activity
 import android.content.Context
 import android.graphics.Canvas
 
+
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Adapter
+
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -18,10 +19,10 @@ import androidx.recyclerview.widget.ItemTouchHelper
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+
 import com.example.memojjang.R
 import com.example.memojjang.adapter.FolderRcyAdapter
-import com.example.memojjang.adapter.MemoRcyAdapter
-import com.example.memojjang.data.FolderData
+
 
 import com.example.memojjang.databinding.ActivityMainBinding
 import com.example.memojjang.dialog.DialogMkFolder

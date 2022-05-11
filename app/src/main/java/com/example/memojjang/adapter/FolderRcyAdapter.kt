@@ -14,6 +14,7 @@ import com.example.memojjang.R
 import com.example.memojjang.activity.MainActivity
 import com.example.memojjang.activity.MemoActivity
 import com.example.memojjang.data.FolderData
+import com.example.memojjang.data.MemoData
 import com.example.memojjang.databinding.ItemMainBinding
 import java.lang.ref.WeakReference
 
@@ -22,6 +23,7 @@ class FolderRcyAdapter(val onDeleteClick: (todo: FolderData) -> Unit) :
     RecyclerView.Adapter<FolderRcyAdapter.ViewHolder>() {
 
     private var foldList = ArrayList<FolderData>()
+    private var memoList = ArrayList<MemoData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -45,14 +47,14 @@ class FolderRcyAdapter(val onDeleteClick: (todo: FolderData) -> Unit) :
         // onclick 수정
 
         holder.mBinding.cardView.setOnClickListener {
-            val intent  = Intent(holder.itemView.context,MainActivity::class.java)
+            val intent  = Intent(holder.itemView.context,MemoActivity::class.java)
+             /*   intent.putExtra("memoData",memoList)*/
             startActivity(holder.itemView.context,intent,null)
             //해당 memo로 이동
         }
     }
-    fun public(){
 
-    }    //유저리스트가 변경 되었을때, 업데이트해준다
+    //유저리스트가 변경 되었을때, 업데이트해준다
     @SuppressLint("NotifyDataSetChanged")
     fun setData(folderData: List<FolderData>) {
         this.foldList = folderData as ArrayList<FolderData>
