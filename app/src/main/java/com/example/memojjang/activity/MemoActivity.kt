@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.memojjang.R
 import com.example.memojjang.adapter.MemoRcyAdapter
+import com.example.memojjang.data.MemoData
 
 import com.example.memojjang.databinding.ActivityMemoBinding
 import com.example.memojjang.fragment.MemoFragment
@@ -43,10 +44,11 @@ class MemoActivity: AppCompatActivity() {
             adapter.setData(user)
         }
 
-        mBinding.createMemo.setOnClickListener {
+        mBinding.createMemo.setOnClickListener{
             mBinding.activityContainer.visibility = View.VISIBLE
             setFragment(MemoFragment())
         }
+
     }
 
       fun setFragment(fragment: Fragment) {
@@ -56,11 +58,15 @@ class MemoActivity: AppCompatActivity() {
           transaction.commit()
       }
 
-    // adapter데이터를 ..accountInfo에 전달
-    fun setData(pos: Int) {
+    // adapter데이터를 .. 전달
+    fun setData(memo: String) {
+       val transaction = supportFragmentManager
+        transaction.setFragmentResult("memoData", bundleOf("data" to memo))
+    }
+    fun boolean(pos: Int, bool : Boolean) {
         val transaction = supportFragmentManager
-        transaction.setFragmentResult("key", bundleOf("data" to pos))
-        Log.e("data","$pos")
+        transaction.setFragmentResult("position", bundleOf("pos" to pos))
+        transaction.setFragmentResult("position", bundleOf("bool" to bool))
     }
 
 }

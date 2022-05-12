@@ -12,7 +12,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.example.memojjang.activity.MemoActivity
+import com.example.memojjang.adapter.MemoRcyAdapter
 import com.example.memojjang.data.MemoData
 import com.example.memojjang.databinding.FragmentMemoBinding
 import com.example.memojjang.viewmodel.FolderViewModel
@@ -23,6 +25,9 @@ class MemoFragment : Fragment() {
 
     private lateinit var mFolderViewModel : FolderViewModel
     lateinit var mBinding: FragmentMemoBinding
+    private var pos : Int = 0
+    private var bool : Boolean = true
+
 
 
 
@@ -35,14 +40,15 @@ class MemoFragment : Fragment() {
 
         mFolderViewModel = ViewModelProvider(this)[FolderViewModel::class.java]
 
-        setFragmentResultListener("key"){requestKey, bundle ->
-            val data:Int = bundle.getInt("data")
-          val c : List<MemoData>? = mFolderViewModel.readFolderMemo.value
-            Log.e("data","$c")
-            mBinding.editTxt.setText(c?.get(data).toString())
-            Log.e("asd","$data")
+        setFragmentResultListener("memoData"){requestKey, bundle ->
+           val memoData = bundle.get("data") as String
+            mBinding.editTxt.setText(memoData)
         }
 
+        setFragmentResultListener("position"){requestKey, bundle ->
+             pos = bundle.getInt("pos")
+             bool = bundle.get("bool") as Boolean
+        }
 
         return mBinding.root
     }
@@ -52,26 +58,34 @@ class MemoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        val goto = Intent(requireContext(),MemoActivity::class.java)
 
         mBinding.btnOk.setOnClickListener {
-            val text = mBinding.editTxt.text.toString()
+
+            val text = mBinding.editTxt.text.toString()  //바깥에 위치하면 안됨
             val data = MemoData(folderMemo = text)
-            mFolderViewModel.insertMemo(data)
-            Toast.makeText(context, "well good save", Toast.LENGTH_SHORT).show()
+
+      //position 값을 받아오는게 중요
+            if (!bool) {
+               val update = MemoData(pos + 1,text)
+                mFolderViewModel.updateMemo(update)
+                Toast.makeText(context, "well good update", Toast.LENGTH_SHORT).show()
+                startActivity(goto)
+            }
+            else {
+                mFolderViewModel.insertMemo(data)
+                Toast.makeText(context, "well good insert", Toast.LENGTH_SHORT).show()
+                startActivity(goto)
+                }
 
         }
 
         mBinding.btnFolder.setOnClickListener {
-          val goto = Intent(requireContext(),MemoActivity::class.java)
             startActivity(goto)
         }
 
         mFolderViewModel = ViewModelProvider(this)[FolderViewModel::class.java]
 
-        mFolderViewModel.readFolderMemo.observe(viewLifecycleOwner) {
-
-        }
     }
 
 

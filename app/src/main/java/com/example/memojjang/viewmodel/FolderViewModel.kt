@@ -20,7 +20,7 @@ class FolderViewModel(application: Application) : AndroidViewModel(application) 
         val folderDao = FolderDataBase.getDatabase(application).folderDao()
         repository = DataRepository(folderDao)
         readFolderData = repository.readAllData
-        readFolderMemo = repository.readAllmemo
+        readFolderMemo = repository.readAllMemo
 
     }
 
@@ -39,6 +39,11 @@ class FolderViewModel(application: Application) : AndroidViewModel(application) 
     fun insertMemo(memoData: MemoData){
         viewModelScope.launch(Dispatchers.IO){
             repository.insertMemo(memoData)
+        }
+    }
+    fun updateMemo(memoData: MemoData){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.updateMemo(memoData)
         }
     }
 

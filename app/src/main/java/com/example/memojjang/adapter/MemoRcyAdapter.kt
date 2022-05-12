@@ -2,9 +2,8 @@ package com.example.memojjang.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
-
+import android.util.Log
 import android.view.LayoutInflater
-
 import android.view.ViewGroup
 
 import androidx.databinding.DataBindingUtil
@@ -21,6 +20,7 @@ class MemoRcyAdapter(val context : Context) : RecyclerView.Adapter<MemoRcyAdapte
     private var memoList = ArrayList<MemoData>()
 
 
+
     class ViewHolder(var mBinding: ItemMemoBinding) : RecyclerView.ViewHolder(mBinding.root)  {
     }
 
@@ -34,16 +34,20 @@ class MemoRcyAdapter(val context : Context) : RecyclerView.Adapter<MemoRcyAdapte
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-      val itemList = memoList[position]
+        val itemList = memoList[position]
+        val goto = context as MemoActivity
+        val bool = false
+
         holder.mBinding.memoData = itemList
 
         holder.mBinding.cardViewMemo.setOnClickListener{
-            val goto = context as MemoActivity
+
             goto.setFragment(MemoFragment())
-            goto.setData(position)
-
-
+            itemList.folderMemo?.let { it -> goto.setData(it) } // memoe데이터 전송
+            goto.boolean(position,bool)     // 리스트 클릭 인지 시켜주기위함
         }
+
+        Log.e("dd","$memoList")
 
     }
 
@@ -56,4 +60,5 @@ class MemoRcyAdapter(val context : Context) : RecyclerView.Adapter<MemoRcyAdapte
         this.memoList = memoData as ArrayList<MemoData>
         notifyDataSetChanged()
     }
+
 }

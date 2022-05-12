@@ -56,6 +56,8 @@ class MainActivity : AppCompatActivity() {
 
         })
 
+        
+
         // 리사이클러 연동
         recyclerView.adapter = adapter
         recyclerView.setHasFixedSize(true)
@@ -172,6 +174,7 @@ class MainActivity : AppCompatActivity() {
 
             }
 
+
             override fun clearView(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder
@@ -183,7 +186,6 @@ class MainActivity : AppCompatActivity() {
                 } else if (viewHolder.itemView.scrollX < 0) {
                     viewHolder.itemView.scrollTo(0, 0)
                 }
-
             }
 
 
