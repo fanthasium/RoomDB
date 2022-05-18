@@ -3,7 +3,7 @@ package com.example.memojjang.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import java.util.concurrent.Flow
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FolderDao {  // 데이터베이스에 접근하여 수행할 작업을 메소드 형태로 정의 (SQL 쿼리 지정 가능)
@@ -38,8 +38,13 @@ interface FolderDao {  // 데이터베이스에 접근하여 수행할 작업을
     fun queryFolder(): LiveData<List<FolderData>>
 
     @Query("SELECT * FROM memo ORDER BY id ASC")   //stack 구조는 DASC
-    fun memoQuery(): LiveData<List<MemoData>>
+    fun memoQuery(): Flow<List<MemoData>>
+
+    @Query("SELECT * FROM memo ORDER BY id ASC")   //stack 구조는 DASC
+    fun memoLiveQuery(): LiveData<List<MemoData>>
 
 
+    @Query("SELECT * FROM memo WHERE folderMemo LIKE :searchQuery")
+    fun searchDatabase(searchQuery: String): Flow<List<MemoData>>  // import kotlinx.coroutines.flow.Flow 코루틴 비동기 실행
 
 }

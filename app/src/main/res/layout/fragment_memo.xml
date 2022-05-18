@@ -60,11 +60,34 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.263"
+            app:layout_constraintHorizontal_bias="0.473"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintVertical_bias="0.845"
             tools:text="Yamagata" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/underLineTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="256dp"
+            android:drawableStart="@drawable/ic_baseline_format_underlined_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editTxt"
+            app:layout_constraintVertical_bias="0.117" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/boldTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_format_bold_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toEndOf="@+id/underLineTxt"
+            app:layout_constraintTop_toTopOf="@+id/editTxt"
+            app:layout_constraintVertical_bias="0.117" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -46,6 +46,10 @@ class FolderRcyAdapter(val onDeleteClick: (todo: FolderData) -> Unit) :
         }
         // onclick 수정
 
+        holder.mBinding.cardView.setOnClickListener{
+            
+        }
+
         holder.mBinding.cardView.setOnClickListener {
             val intent  = Intent(holder.itemView.context,MemoActivity::class.java)
              /*   intent.putExtra("memoData",memoList)*/
@@ -69,8 +73,8 @@ class FolderRcyAdapter(val onDeleteClick: (todo: FolderData) -> Unit) :
 
     class ViewHolder(val mBinding: ItemMainBinding) : RecyclerView.ViewHolder(mBinding.root) {
 
+
         private val view = WeakReference(itemView)
-        private var cardView: CardView
 
 //        var index = 0
 
@@ -82,7 +86,6 @@ class FolderRcyAdapter(val onDeleteClick: (todo: FolderData) -> Unit) :
                     }
                 }
             }
-            cardView = mBinding.cardView
 
         }
 

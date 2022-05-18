@@ -9,11 +9,14 @@ import com.example.memojjang.data.FolderDataBase
 import com.example.memojjang.data.MemoData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.Flow
 
 class FolderViewModel(application: Application) : AndroidViewModel(application) {
 
     val readFolderData: LiveData<List<FolderData>>  //DB
-    val readFolderMemo: LiveData<List<MemoData>>    //DB
+    val readFolderMemo: Flow<List<MemoData>>    //DB
+    val readmemo: LiveData<List<MemoData>>
+
     private val repository: DataRepository
 
     init {
@@ -21,7 +24,7 @@ class FolderViewModel(application: Application) : AndroidViewModel(application) 
         repository = DataRepository(folderDao)
         readFolderData = repository.readAllData
         readFolderMemo = repository.readAllMemo
-
+        readmemo = repository.readMemo
     }
 
     fun insertFolder(folderData: FolderData) {            // 파라미터에 만든 데이터클래스가 들어감
@@ -45,6 +48,10 @@ class FolderViewModel(application: Application) : AndroidViewModel(application) 
         viewModelScope.launch(Dispatchers.IO){
             repository.updateMemo(memoData)
         }
+    }
+
+    fun searchDatabase(searchQuery: String): LiveData<List<MemoData>>{
+        return repository.searchDatabase(searchQuery).asLiveData()
     }
 
 }

@@ -7,7 +7,10 @@ import android.graphics.Canvas
 
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.view.View
+import android.widget.EditText
+import android.widget.SearchView
 
 
 import androidx.appcompat.app.AppCompatActivity
@@ -47,6 +50,8 @@ class MainActivity : AppCompatActivity() {
             DialogMkFolder(this).show(supportFragmentManager, "folder")
         }
 
+
+
         recyclerView = mBinding.rcyView
 
 
@@ -55,8 +60,6 @@ class MainActivity : AppCompatActivity() {
             Log.e("log","$it")
 
         })
-
-        
 
         // 리사이클러 연동
         recyclerView.adapter = adapter
@@ -79,9 +82,7 @@ class MainActivity : AppCompatActivity() {
             setFragment(MemoFragment())
         }
 
-
     }
-
 
     fun setFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
@@ -89,7 +90,6 @@ class MainActivity : AppCompatActivity() {
         transaction.addToBackStack(null)
         transaction.commit()
     }
-
 
 
     // 터치 헬퍼 메소드

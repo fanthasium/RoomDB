@@ -2,6 +2,8 @@ package com.example.memojjang.activity
 
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 
 import android.view.View
@@ -20,6 +22,7 @@ import com.example.memojjang.data.MemoData
 import com.example.memojjang.databinding.ActivityMemoBinding
 import com.example.memojjang.fragment.MemoFragment
 import com.example.memojjang.viewmodel.FolderViewModel
+import kotlinx.coroutines.flow.observeOn
 
 class MemoActivity: AppCompatActivity() {
    lateinit var mFolderViewModel : FolderViewModel
@@ -40,7 +43,7 @@ class MemoActivity: AppCompatActivity() {
 
         mFolderViewModel = ViewModelProvider(this)[FolderViewModel::class.java]
 
-        mFolderViewModel.readFolderMemo.observe(this){ user ->
+        mFolderViewModel.readmemo.observe(this){ user ->
             adapter.setData(user)
         }
 
@@ -48,6 +51,32 @@ class MemoActivity: AppCompatActivity() {
             mBinding.activityContainer.visibility = View.VISIBLE
             setFragment(MemoFragment())
         }
+
+        mBinding.searchEditTxt.setOnClickListener{
+            mBinding.searchEditTxt.addTextChangedListener( object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                }
+
+            })
+
+            }
+        }
+
+        fun filter(text : String) {
+            val filteredList = ArrayList<MemoData>()
 
     }
 
@@ -66,7 +95,10 @@ class MemoActivity: AppCompatActivity() {
     fun boolean(pos: Int, bool : Boolean) {
         val transaction = supportFragmentManager
         transaction.setFragmentResult("position", bundleOf("pos" to pos))
+
         transaction.setFragmentResult("position", bundleOf("bool" to bool))
     }
+
+
 
 }
