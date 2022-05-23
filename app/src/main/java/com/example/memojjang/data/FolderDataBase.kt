@@ -7,6 +7,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import kotlinx.coroutines.CoroutineScope
 
 @Database(entities = [FolderData::class, MemoData::class], version = 1, exportSchema = false)
 abstract class FolderDataBase : RoomDatabase() {
@@ -42,7 +43,7 @@ abstract class FolderDataBase : RoomDatabase() {
 
         // 싱글톤으로 생성 (자주 생성 시 성능 손해). 이미 존재할 경우 생성하지 않고 바로 반환
 
-        fun getDatabase(context: Context) : FolderDataBase {
+        fun getDatabase(context: Context, viewModelScope: CoroutineScope) : FolderDataBase {
             val tempInstance = INSTANCE
             if(tempInstance != null){
                 return tempInstance

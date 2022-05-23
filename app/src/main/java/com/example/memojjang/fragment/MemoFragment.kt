@@ -106,13 +106,13 @@ class MemoFragment : Fragment() {
 
             span.setSpan(
                 StyleSpan(Typeface.BOLD),
-                selectPos,selectPos + end -1,
+                selectPos,selectPos + end ,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE,
                 )
 
-            //넣을 때 어디다 어떻게?
             mBinding.editTxt.setText(span, TextView.BufferType.SPANNABLE)
                 // 이렇게 하니까 버튼만 누르면 오류가 나서 종류가 된다 if 문으로 만들 것
+            // 이거 저장하면 다시 돌아온다
         }
 
         mBinding.underLineTxt.setOnClickListener {

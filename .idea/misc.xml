@@ -17,21 +17,25 @@
         <entry key="app/src/main/res/drawable/ic_baseline_format_bold_24.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/ic_baseline_format_underlined_24.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.2325" />
-        <entry key="app/src/main/res/drawable/round_corner.xml" value="0.22" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1695" />
+        <entry key="app/src/main/res/drawable/radious.xml" value="0.55" />
+        <entry key="app/src/main/res/drawable/round_corner.xml" value="0.18" />
         <entry key="app/src/main/res/drawable/stroke_custom.xml" value="0.2325" />
         <entry key="app/src/main/res/drawable/stroke_custom1.xml" value="0.111" />
+        <entry key="app/src/main/res/layout-v23/item_main.xml" value="0.21666666666666667" />
         <entry key="app/src/main/res/layout-v23/item_memo.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.21" />
-        <entry key="app/src/main/res/layout/activity_memo.xml" value="0.1860986547085202" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_memo.xml" value="0.22" />
         <entry key="app/src/main/res/layout/click_custom.xml" value="0.1" />
         <entry key="app/src/main/res/layout/delete.xml" value="0.1" />
         <entry key="app/src/main/res/layout/dialog_folder.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_folder.xml" value="0.3494791666666667" />
         <entry key="app/src/main/res/layout/fragment_memo.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/item_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_main.xml" value="0.22" />
         <entry key="app/src/main/res/layout/item_memo 2.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_memo.xml" value="0.21" />
         <entry key="app/src/main/res/layout/memo_main.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/search_layout.xml" value="0.25" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.22" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.182" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.182" />

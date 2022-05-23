@@ -3,6 +3,7 @@ package com.example.memojjang.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Fts4
 import androidx.room.PrimaryKey
 
 
@@ -14,6 +15,6 @@ data class FolderData(
     @ColumnInfo(name = "folderName")
     val folderName: String?,
 
-    ) {
+    )
 
-}
+

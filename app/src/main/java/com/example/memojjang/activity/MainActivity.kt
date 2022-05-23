@@ -6,18 +6,14 @@ import android.graphics.Canvas
 
 
 import android.os.Bundle
-import android.util.Log
-import android.view.KeyEvent
 import android.view.View
-import android.widget.EditText
-import android.widget.SearchView
-
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -46,18 +42,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+
         mBinding.createFolder.setOnClickListener {
             DialogMkFolder(this).show(supportFragmentManager, "folder")
         }
-
-
 
         recyclerView = mBinding.rcyView
 
 
         val adapter = FolderRcyAdapter(onDeleteClick = {
             folderViewModel.deleteFolder(it)
-            Log.e("log","$it")
 
         })
 
@@ -84,7 +78,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun setFragment(fragment: Fragment) {
+    private fun setFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.container, fragment)
         transaction.addToBackStack(null)

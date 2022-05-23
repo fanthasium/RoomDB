@@ -9,8 +9,8 @@ import  kotlinx.coroutines.flow.Flow
 class DataRepository (private val folderDao : FolderDao){
 
     val readAllData : LiveData<List<FolderData>> = folderDao.queryFolder()
-    val readAllMemo : Flow<List<MemoData>> = folderDao.memoQuery()
     val readMemo : LiveData<List<MemoData>> = folderDao.memoLiveQuery()
+
 
     //리사이클러뷰 해당 아이템 추가
     suspend fun insertFolder(folderData : FolderData){
@@ -31,9 +31,6 @@ class DataRepository (private val folderDao : FolderDao){
         folderDao.updateMemo((memoData))
     }
 
-    fun searchDatabase(searchQuery: String): Flow<List<MemoData>> {
-        return folderDao.searchDatabase(searchQuery)
-    }
 
 
 }
