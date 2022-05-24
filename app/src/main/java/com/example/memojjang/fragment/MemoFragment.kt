@@ -126,7 +126,6 @@ class MemoFragment : Fragment() {
                 selectPos,selectPos + end -1,
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
             )
-
             mBinding.editTxt.setText(span2, TextView.BufferType.SPANNABLE)
 
         }

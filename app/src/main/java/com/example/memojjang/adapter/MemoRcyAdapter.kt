@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.memojjang.R
 import com.example.memojjang.activity.MemoActivity
+import com.example.memojjang.data.FolderData
 
 import com.example.memojjang.data.MemoData
 import com.example.memojjang.databinding.ItemMemoBinding
@@ -18,7 +19,7 @@ import com.example.memojjang.fragment.MemoFragment
 class MemoRcyAdapter(
     private val context: Context,
     var filterList: ArrayList<MemoData>,
-
+    val onDeleteClick: (todo: FolderData) -> Unit
     ) :
     RecyclerView.Adapter<MemoRcyAdapter.ViewHolder>() {
 
@@ -53,11 +54,12 @@ class MemoRcyAdapter(
                 goto.setFragment(MemoFragment())
                 memoList.folderMemo?.let { it -> goto.setData(it) } // memoe데이터 전송
                 goto.boolean(position, bool)     // 리스트 클릭 인지 시켜주기위함
-
             }
-
         }
-
+        // 삭제
+        holder.mBinding.delete.setOnClickListener {
+            onDeleteClick.invoke(memoList)
+        }
 
     }
 

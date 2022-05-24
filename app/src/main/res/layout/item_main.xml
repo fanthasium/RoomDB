@@ -12,50 +12,59 @@
 
     </data>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="130dp">
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="375dp"
+                android:layout_height="90dp"
+                android:elevation="20dp"
+                android:background="@drawable/radious_cardview"
+                android:layout_gravity="center_vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="350dp"
+                    android:layout_height="70dp"
+                    android:drawablePadding="10dp"
+                    android:layout_gravity="center"
+                    android:text="@{folderData.folderName}"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:textAlignment="viewStart"
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/ic_baseline_folder_24"
+                    app:drawableTint="#ECD389"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/cardView"
+                    app:layout_constraintTop_toTopOf="@+id/cardView"
+                    tools:ignore="RtlCompat"
+                    />
+            </androidx.cardview.widget.CardView>
 
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="20dp"
-            android:elevation="10dp"
-            app:cardCornerRadius="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:drawablePadding="10dp"
-                android:gravity="center"
-                android:textAlignment="viewStart"
-                android:textStyle="bold"
-                app:drawableStartCompat="@drawable/ic_baseline_folder_24"
-                app:drawableTint="#ECD389"
-                tools:ignore="RtlCompat"
-                tools:text="@{folderData.folderName}" />
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.appcompat.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/delete"
-            android:layout_width="90dp"
-            android:layout_height="89dp"
-            android:background="@drawable/radious"
-            android:gravity="center"
-            app:drawableStartCompat="@drawable/ic_baseline_delete_24"
-            app:drawableTint="#FFFFFF"
-            app:layout_constraintBottom_toBottomOf="@+id/cardView"
-            app:layout_constraintEnd_toEndOf="@+id/cardView"
+            android:layout_width="80dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center_vertical|right"
+            android:background="@drawable/radious_delete"
+            android:src="@drawable/ic_baseline_delete_24"
+            android:tint="@color/white"
+            app:layout_constraintStart_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/cardView"
-            app:layout_editor_absoluteX="150dp" />
+            tools:ignore="RtlHardcoded" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

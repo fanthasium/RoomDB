@@ -12,32 +12,44 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="200dp"
+        android:layout_height="280dp"
+        android:layout_margin="10dp">
 
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewMemo"
-                android:layout_width="370dp"
-                android:layout_height="65dp"
-                android:layout_margin="20dp"
-                android:elevation="10dp"
-                app:cardCornerRadius="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewMemo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="10dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="@{memoData.folderMemo}"
-                    android:textAlignment="viewStart"
-                    android:textStyle="bold"
-                    tools:ignore="RtlCompat" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:text="@{memoData.folderMemo}"
+                android:textAlignment="textStart"
+                android:textStyle="bold"
+                tools:ignore="RtlCompat" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/delete"
+            android:layout_width="65dp"
+            android:layout_height="280dp"
+            android:layout_gravity="center_vertical|right"
+            android:background="@drawable/radious_delete"
+            android:src="@drawable/ic_baseline_delete_24"
+            android:tint="@color/white"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/cardViewMemo"
+            tools:ignore="RtlHardcoded" />
 
 
-
-            </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
