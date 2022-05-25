@@ -44,7 +44,7 @@ class FolderViewModel(application: Application) : AndroidViewModel(application) 
     }
     fun deleteMemo(memoData: MemoData) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteFolder(memoData)
+            repository.deleteMemo (memoData)
         }
     }
 

@@ -39,7 +39,5 @@ interface FolderDao {  // 데이터베이스에 접근하여 수행할 작업을
 
     @Query("SELECT * FROM memo ORDER BY id ASC")   //stack 구조는 DASC
     fun memoLiveQuery(): LiveData<List<MemoData>>
-/*
-    @Query("SELECT * FROM memo WHERE folderMemo LIKE : searchQuery")
-    fun searchDatabase(searchQuery: String): Flow<List<MemoData>>*/
+
 }

@@ -1,6 +1,5 @@
 package com.example.memojjang.fragment
 
-import android.R
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
@@ -20,7 +19,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.example.memojjang.activity.MemoActivity
+import com.example.memojjang.adapter.MemoRcyAdapter
 import com.example.memojjang.data.MemoData
 import com.example.memojjang.databinding.FragmentMemoBinding
 import com.example.memojjang.viewmodel.FolderViewModel
@@ -64,17 +65,19 @@ class MemoFragment : Fragment() {
 
         val goto = Intent(requireContext(), MemoActivity::class.java)
 
-
         mBinding.btnOk.setOnClickListener {
             val text = mBinding.editTxt.text.toString()  //바깥에 위치하면 안됨
 
             val data = MemoData(folderMemo = text)
 
+
             //position 값을 받아오는게 중요
 
             if (!bool) {
-                val update = MemoData(pos + 1, text)
-                mFolderViewModel.updateMemo(update)
+
+                val update = MemoData(0,text)
+                     mFolderViewModel.updateMemo(update)
+                Log.e("data","$data")
                 Toast.makeText(context, "well good update", Toast.LENGTH_SHORT).show()
                 startActivity(goto)
 
@@ -82,6 +85,7 @@ class MemoFragment : Fragment() {
                 mFolderViewModel.insertMemo(data)
                 Toast.makeText(context, "well good insert", Toast.LENGTH_SHORT).show()
                 startActivity(goto)
+                Log.e("data1","$data")
             }
         }
         mBinding.btnFolder.setOnClickListener {

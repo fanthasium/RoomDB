@@ -4,6 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.16614583333333333" />
+        <entry key="..\:/Users/anhos/StudioProjects/Memo/app/src/main/res/drawable/radious_delete.xml" value="0.1775" />
+        <entry key="..\:/Users/anhos/StudioProjects/Memo/app/src/main/res/layout/activity_main.xml" value="0.16979166666666667" />
+        <entry key="..\:/Users/anhos/StudioProjects/Memo/app/src/main/res/layout/activity_memo.xml" value="0.16979166666666667" />
+        <entry key="..\:/Users/anhos/StudioProjects/Memo/app/src/main/res/layout/item_main.xml" value="0.16979166666666667" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1045" />
         <entry key="app/src/main/res/drawable/dialog_custom.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/dialog_edittxt.xml" value="0.375" />

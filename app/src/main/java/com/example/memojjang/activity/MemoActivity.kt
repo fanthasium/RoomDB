@@ -39,7 +39,6 @@ class MemoActivity : AppCompatActivity() {
 
     val adapter = MemoRcyAdapter(this, filterList = filterList, onDeleteClick = {
         mFolderViewModel.deleteMemo(it)
-
     })
 
     override fun onCreate(savedInstanceState: Bundle?) {

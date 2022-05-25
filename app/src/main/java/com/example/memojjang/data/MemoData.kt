@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "memo")
 data class MemoData(
     @PrimaryKey(autoGenerate = true)
-    val id : Int = 0,
+    val id: Int = 0,
     @ColumnInfo(name = "folderMemo")
     val folderMemo: String?
 ){

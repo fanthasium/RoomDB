@@ -10,21 +10,22 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.memojjang.R
 import com.example.memojjang.activity.MemoActivity
-import com.example.memojjang.data.FolderData
 
 import com.example.memojjang.data.MemoData
 import com.example.memojjang.databinding.ItemMemoBinding
 import com.example.memojjang.fragment.MemoFragment
 
-class MemoRcyAdapter(
+ class MemoRcyAdapter(
     private val context: Context,
     var filterList: ArrayList<MemoData>,
-    val onDeleteClick: (todo: MemoData) -> Unit
+    val onDeleteClick: (todo: MemoData) -> Unit,
     ) :
     RecyclerView.Adapter<MemoRcyAdapter.ViewHolder>() {
 
     private var memoList = ArrayList<MemoData>()
-    var boole = true   //memoActivity에서 adapter연결지어주고 변수 사용해 클릭시 값 false로
+    var boole = true   //memoActivity에서 adapter연결지어주고 변수 사용해 클릭시 값 false로\
+
+
 
     class ViewHolder(var mBinding: ItemMemoBinding) : RecyclerView.ViewHolder(mBinding.root) {
     }
@@ -48,6 +49,7 @@ class MemoRcyAdapter(
             val filterList = filterList[position]
             holder.mBinding.memoData = filterList
             Log.e("FilterListAdapt", "$filterList")
+
         } else {
             holder.mBinding.memoData = memoList
             holder.mBinding.cardViewMemo.setOnClickListener {

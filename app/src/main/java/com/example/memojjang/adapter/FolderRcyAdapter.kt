@@ -24,6 +24,7 @@ class FolderRcyAdapter(val onDeleteClick: (todo: FolderData) -> Unit) :
 
     private var foldList = ArrayList<FolderData>()
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val mBinding: ItemMainBinding =

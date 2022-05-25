@@ -9,7 +9,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 
-@Database(entities = [FolderData::class, MemoData::class], version = 1, exportSchema = false)
+@Database(entities = [FolderData::class, MemoData::class], version = 2, exportSchema = false)
 abstract class FolderDataBase : RoomDatabase() {
 
     abstract fun folderDao() : FolderDao
@@ -28,11 +28,7 @@ abstract class FolderDataBase : RoomDatabase() {
 
         val MIGRATION_2_3 : Migration = object : Migration(2,3){
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("DROP TABLE folder")
-                database.execSQL("DROP TABLE memo")
 
-                database.execSQL("CREATE TABLE folderName(id INTEGER PRIMARY KEY NOT NULL, folderName TEXT)")
-                database.execSQL("CREATE TABLE memoName (id INTEGER PRIMARY KEY NOT NULL, folderMemo TEXT)")
             }
         }
 
