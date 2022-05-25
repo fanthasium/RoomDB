@@ -18,7 +18,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.memojjang.R
 import com.example.memojjang.adapter.MemoRcyAdapter
@@ -38,7 +37,10 @@ class MemoActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
 
 
-    val adapter = MemoRcyAdapter(this, filterList = filterList)
+    val adapter = MemoRcyAdapter(this, filterList = filterList, onDeleteClick = {
+        mFolderViewModel.deleteMemo(it)
+
+    })
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

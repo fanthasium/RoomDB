@@ -42,6 +42,11 @@ class FolderViewModel(application: Application) : AndroidViewModel(application) 
             repository.deleteFolder(folderData)
         }
     }
+    fun deleteMemo(memoData: MemoData) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteFolder(memoData)
+        }
+    }
 
     fun insertMemo(memoData: MemoData){
         viewModelScope.launch(Dispatchers.IO){

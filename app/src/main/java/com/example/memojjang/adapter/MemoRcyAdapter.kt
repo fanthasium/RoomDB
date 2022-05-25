@@ -19,7 +19,7 @@ import com.example.memojjang.fragment.MemoFragment
 class MemoRcyAdapter(
     private val context: Context,
     var filterList: ArrayList<MemoData>,
-    val onDeleteClick: (todo: FolderData) -> Unit
+    val onDeleteClick: (todo: MemoData) -> Unit
     ) :
     RecyclerView.Adapter<MemoRcyAdapter.ViewHolder>() {
 

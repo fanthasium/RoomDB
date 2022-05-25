@@ -25,6 +25,9 @@ class DataRepository (private val folderDao : FolderDao){
    suspend fun deleteFolder(folderData: FolderData){
         folderDao.deleteFolder(folderData)
     }
+    suspend fun deleteFolder(memoData: MemoData){
+        folderDao.deleteMemo(memoData)
+    }
 
     // 아이템 업데이트
     suspend fun updateMemo(memoData: MemoData){
