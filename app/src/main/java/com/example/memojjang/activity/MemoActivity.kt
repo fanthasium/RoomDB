@@ -104,8 +104,6 @@ class MemoActivity : AppCompatActivity() {
                 memo.folderMemo?.let { filterList.add(memo) }
                 adapter.filter(filterList)
 
-                Log.e("text", text)
-                Log.e("Filter", "$filterList")
             }
         }
 
@@ -125,23 +123,25 @@ class MemoActivity : AppCompatActivity() {
     }
 
     // adapter데이터를 .. 전달
-    fun setData(memo: String) {
+    fun setData(id: Int) {
         val transaction = supportFragmentManager
-        transaction.setFragmentResult("memoData", bundleOf("data" to memo))
+        transaction.setFragmentResult("memoData", bundleOf("id" to id))
+
+    }
+    fun setDataMemo(memo: String) {
+        val transaction = supportFragmentManager
+        transaction.setFragmentResult("memoDataMemo", bundleOf("data" to memo))
     }
 
-    fun boolean(pos: Int, bool: Boolean) {
+    fun boolean(bool: Boolean) {
         val transaction = supportFragmentManager
-        transaction.setFragmentResult("position", bundleOf("pos" to pos))
-
         transaction.setFragmentResult("position", bundleOf("bool" to bool))
     }
-
 
     private fun setItemTouchHelper() {
         ItemTouchHelper(object : ItemTouchHelper.Callback() {
 
-            private val limitScrollX = dipToPx(65f, this@MemoActivity)
+            private val limitScrollX = dipToPx(65.0f, this@MemoActivity)
             private var currentScrollX = 0
             private var currentScrollXWhenInActive = 0
             private var initXWhenInActive = 0f

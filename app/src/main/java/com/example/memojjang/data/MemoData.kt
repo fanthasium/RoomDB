@@ -10,6 +10,4 @@ data class MemoData(
     val id: Int = 0,
     @ColumnInfo(name = "folderMemo")
     val folderMemo: String?
-){
-
-}
+)

@@ -2,7 +2,6 @@ package com.example.memojjang.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
@@ -42,20 +41,22 @@ import com.example.memojjang.fragment.MemoFragment
 
         val memoList = memoList[position]
         val goto = context as MemoActivity
-        val bool = false
+        val checkClick = false
+
+
 
 
         if (!boole) {
             val filterList = filterList[position]
             holder.mBinding.memoData = filterList
-            Log.e("FilterListAdapt", "$filterList")
 
         } else {
             holder.mBinding.memoData = memoList
             holder.mBinding.cardViewMemo.setOnClickListener {
                 goto.setFragment(MemoFragment())
-                memoList.folderMemo?.let { it -> goto.setData(it) } // memoe데이터 전송
-                goto.boolean(position, bool)     // 리스트 클릭 인지 시켜주기위함
+                goto.setData(memoList.id)
+               memoList.folderMemo?.let { memoData -> goto.setDataMemo(memoData) } // memoe데이터 전송
+                goto.boolean(checkClick)     // 리스트 클릭 인지 시켜주기위함
             }
         }
         // 삭제

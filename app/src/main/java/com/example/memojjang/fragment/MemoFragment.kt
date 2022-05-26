@@ -18,8 +18,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.PrimaryKey
 import com.example.memojjang.activity.MemoActivity
 import com.example.memojjang.adapter.MemoRcyAdapter
 import com.example.memojjang.data.MemoData
@@ -32,8 +34,9 @@ class MemoFragment : Fragment() {
 
     private lateinit var mFolderViewModel: FolderViewModel
     lateinit var mBinding: FragmentMemoBinding
-    private var pos: Int = 0
-    private var bool: Boolean = true
+    private var checkClick: Boolean = true
+    private var key : Int = 0
+
 
 
     override fun onCreateView(
@@ -46,14 +49,15 @@ class MemoFragment : Fragment() {
         mFolderViewModel = ViewModelProvider(this)[FolderViewModel::class.java]
 
         setFragmentResultListener("memoData") { requestKey, bundle ->
-            val memoData = bundle.get("data") as String
+            key = bundle.get("id") as Int
+        }
+        setFragmentResultListener("memoDataMemo") { requestKey, bundle ->
+          val memoData = bundle.get("data") as String
             mBinding.editTxt.setText(memoData)
         }
-
         setFragmentResultListener("position") { requestKey, bundle ->
-            pos = bundle.getInt("pos")
-            bool = bundle.get("bool") as Boolean
-            Log.e("dc", "$pos")
+            checkClick = bundle.get("bool") as Boolean
+
         }
 
         return mBinding.root
@@ -65,19 +69,21 @@ class MemoFragment : Fragment() {
 
         val goto = Intent(requireContext(), MemoActivity::class.java)
 
-        mBinding.btnOk.setOnClickListener {
-            val text = mBinding.editTxt.text.toString()  //바깥에 위치하면 안됨
 
-            val data = MemoData(folderMemo = text)
+     /*   Log.e("memo","$memoList")*/
+
+        mBinding.btnOk.setOnClickListener {
+
+
+            val text = mBinding.editTxt.text.toString()  //바깥에 위치하면 안됨
+            val data = MemoData( key,folderMemo = text)
+
 
 
             //position 값을 받아오는게 중요
 
-            if (!bool) {
-
-                val update = MemoData(0,text)
-                     mFolderViewModel.updateMemo(update)
-                Log.e("data","$data")
+            if (!checkClick) {
+                     mFolderViewModel.updateMemo(data)
                 Toast.makeText(context, "well good update", Toast.LENGTH_SHORT).show()
                 startActivity(goto)
 
@@ -85,7 +91,6 @@ class MemoFragment : Fragment() {
                 mFolderViewModel.insertMemo(data)
                 Toast.makeText(context, "well good insert", Toast.LENGTH_SHORT).show()
                 startActivity(goto)
-                Log.e("data1","$data")
             }
         }
         mBinding.btnFolder.setOnClickListener {
@@ -95,7 +100,6 @@ class MemoFragment : Fragment() {
         val tx: EditText = mBinding.editTxt
 
 
-
         //스팬 넣어주기
         mBinding.boldTxt.setOnClickListener {
             val txt = mBinding.editTxt.text
@@ -103,9 +107,6 @@ class MemoFragment : Fragment() {
             val selectPos = tx.text.indexOf(selectedStr)
             val span = SpannableString(txt)
             val end = selectedStr.length
-            Log.e("startttx", txt.toString())
-            Log.e("start","$selectedStr")
-            Log.e("start","$selectPos")
 
 
             span.setSpan(

@@ -3,7 +3,6 @@ package com.example.memojjang.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FolderDao {  // 데이터베이스에 접근하여 수행할 작업을 메소드 형태로 정의 (SQL 쿼리 지정 가능)

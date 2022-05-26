@@ -9,7 +9,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 
-@Database(entities = [FolderData::class, MemoData::class], version = 2, exportSchema = false)
+@Database(entities = [FolderData::class, MemoData::class], version = 1, exportSchema = false)
 abstract class FolderDataBase : RoomDatabase() {
 
     abstract fun folderDao() : FolderDao
