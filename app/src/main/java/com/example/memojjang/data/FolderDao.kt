@@ -16,6 +16,7 @@ interface FolderDao {  // 데이터베이스에 접근하여 수행할 작업을
 
 
 
+
     @Delete
     suspend fun deleteFolder(vararg folder: FolderData)
 

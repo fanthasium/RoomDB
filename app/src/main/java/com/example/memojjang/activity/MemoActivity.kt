@@ -3,12 +3,14 @@ package com.example.memojjang.activity
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.graphics.Canvas
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
@@ -41,9 +43,11 @@ class MemoActivity : AppCompatActivity() {
         mFolderViewModel.deleteMemo(it)
     })
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_memo)
+
 
         recyclerView = mBinding.rcyView
 

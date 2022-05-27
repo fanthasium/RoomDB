@@ -45,7 +45,6 @@ import com.example.memojjang.fragment.MemoFragment
 
 
 
-
         if (!boole) {
             val filterList = filterList[position]
             holder.mBinding.memoData = filterList
